@@ -11,7 +11,13 @@ const themeColor = `#5cb85c`;
 
 const maxModalWidth = '800px';
 
+const progressColor = '#f1f1f1';
+const progressBarColor = '#2196F3';
+const progressBarHeight = '24px';
+
 const styles = `
+
+/* Center aligns text */
 
 /* The Modal (background) */
 .modal {
@@ -96,6 +102,20 @@ const styles = `
 
 .modal-footer {
     padding: 2px 16px;
+}
+
+/* Progress bar related styles */
+.progress {
+    background-color: ${progressColor};
+    width: 100%;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 0;
+    height: ${progressBarHeight};
+    background-color: ${progressBarColor};
+    transition: width 0.5s ease-in-out;
 }
 `;
 

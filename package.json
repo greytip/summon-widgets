@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "parcel index.html -p 4000",
-    "build": "parcel build src/browser.js && cp dist/browser.js build/bundle.js",
+    "build": "parcel build src/browser.js -d build -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,10 @@
   "devDependencies": {
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.10.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0"
   }
 }

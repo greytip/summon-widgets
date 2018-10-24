@@ -17,11 +17,20 @@ const templateString = `
       <h2>Modal Header</h2>
     </div>
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <p>
+        Batch Id: <span id="batch-id"></span>
+      </p>
+      <p>
+        Source : <span id="source"></span>
+      </p>
+      <button id="start">Start</button>
+      <p>
+        Progress (<span id="progressStatus"></span>)
+      </p>
+      <div class="progress">
+        <div class="progress-bar">
+        </div>
+      </div>
     </div>
   </div>
 
