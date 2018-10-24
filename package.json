@@ -1,11 +1,11 @@
 {
   "name": "@username/summon-widgets",
   "version": "1.0.0",
-  "description": "\"\"",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "server": "parcel index.html -p 4000",
-    "build": "parcel build src/index.js",
+    "build": "parcel build src/browser.js && cp dist/browser.js build/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
