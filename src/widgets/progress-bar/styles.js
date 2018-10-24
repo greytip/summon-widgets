@@ -9,6 +9,8 @@ const modalShadow = ` 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)`
 // Color which will be used as background for header and footer of modal.
 const themeColor = `#5cb85c`;
 
+const maxModalWidth = '800px';
+
 const styles = `
 
 /* The Modal (background) */
@@ -34,6 +36,7 @@ const styles = `
     border: ${contentBorder};
     border-radius: 5px;
     width: 80%;
+    max-width: ${maxModalWidth};
     box-shadow: ${modalShadow};
     -webkit-animation-name: animateTop;
     -webkit-animation-duration: 0.4s;
