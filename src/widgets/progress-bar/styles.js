@@ -15,6 +15,8 @@ const progressColor = '#f1f1f1';
 const progressBarColor = '#2196F3';
 const progressBarHeight = '24px';
 
+const errorTextColor = '#f44336';
+
 const styles = `
 
 /* Center aligns text */
@@ -115,7 +117,18 @@ const styles = `
     width: 0;
     height: ${progressBarHeight};
     background-color: ${progressBarColor};
+    text-align: center;
     transition: width 0.5s ease-in-out;
+}
+
+.progress-status {
+    color: white;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.text-error {
+    color: ${errorTextColor};
 }
 `;
 

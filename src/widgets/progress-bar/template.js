@@ -8,7 +8,7 @@ const templateString = `
 <button class="trigger">Show progress</button>
 
 <!-- The Modal -->
-<div class="modal">
+<div id="modal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
@@ -17,19 +17,12 @@ const templateString = `
       <h2>Modal Header</h2>
     </div>
     <div class="modal-body">
-      <p>
-        Batch Id: <span id="batch-id"></span>
-      </p>
-      <p>
-        Source : <span id="source"></span>
-      </p>
-      <button id="start">Start</button>
-      <p>
-        Progress (<span id="progressStatus"></span>)
-      </p>
+      <h4>
+        Progress
+      </h4>
+      <p id="message"></p>
       <div class="progress">
-        <div class="progress-bar">
-        </div>
+        <div class="progress-bar"><span class="progress-status" id="progressStatus"></span></div>
       </div>
     </div>
   </div>

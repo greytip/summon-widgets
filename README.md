@@ -4,7 +4,7 @@ A collection of useful widgets.
 
 ## Usage
 
-To use widgets in browser, plesae follow instruction below:
+To use widgets in browser, please follow instruction below:
 
 1. Add the `script` tag in your web as below.
 
@@ -21,7 +21,7 @@ customElements.define('my-progress-bar', SummonWidgets.ProgressBar);
 3. Once you register a widget, it's available as an `HTMLElement`.
 
 ```HTML
-<!-- Out custome progress bar. -->
+<!-- Our custom progress bar. -->
 <my-progress-bar></my-progress-bar>
 ```
 
@@ -31,6 +31,6 @@ customElements.define('my-progress-bar', SummonWidgets.ProgressBar);
 
 TODO: Provide details about widgets and their apis.
 
-## Developement Guide
+## Development Guide
 
 TODO: Write instruction.
