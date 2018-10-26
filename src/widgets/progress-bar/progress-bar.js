@@ -45,7 +45,7 @@ class ProgressBar extends HTMLElement {
     }
 
     const jobId = this.getAttribute(options.jobId);
-    return parseTemplateString(source, { [options.jobId]: bacthId });
+    return parseTemplateString(source, { [options.jobId]: jobId });
   }
 
   /**
