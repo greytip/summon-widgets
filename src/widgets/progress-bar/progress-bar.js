@@ -1,6 +1,7 @@
 import html from './template';
 import { getStatus } from './progress.service';
 import EventQueue from './event-queue';
+import { parseTemplateString } from '../../utils';
 
 /**
  * Interval at which status is fetched.
@@ -15,7 +16,10 @@ const EVENT_QUEUE_TIME = 100; // in ms
 /**
  * Attributes which we'll be provided by consumer.
  */
-const options = ['batch-id', 'source', 'auto-start'];
+const options = {
+  jobId: 'job-id',
+  source: 'source'
+};
 
 class ProgressBar extends HTMLElement {
   constructor() {
@@ -34,6 +38,16 @@ class ProgressBar extends HTMLElement {
     this.eventQueue = null;
   }
 
+  get statusSource() {
+    const source = this.getAttribute(options.source);
+    if (source === null) {
+      throw new Error('No source provided for status.');
+    }
+
+    const jobId = this.getAttribute(options.jobId);
+    return parseTemplateString(source, { [options.jobId]: bacthId });
+  }
+
   /**
    * Status/event message which will be displayed to the user.
    *
@@ -41,11 +55,6 @@ class ProgressBar extends HTMLElement {
    */
   set message(value) {
     this.shadowRoot.getElementById('message').innerHTML = value;
-  }
-
-  get error() {
-    const message = 'Something is not right. Will retry in sometimes.';
-    return `<span class="text-error">${message}</span>`;
   }
 
   /**
@@ -85,6 +94,12 @@ class ProgressBar extends HTMLElement {
       .classList.contains('modal-open');
   }
 
+  getErrorMessage(error = {}) {
+    const message =
+      error.message || 'Something is not right. Will retry in sometimes.';
+    return `<span class="text-error">${message}</span>`;
+  }
+
   /**
    * Invoked when element is inserted to DOM.
    *
@@ -99,7 +114,6 @@ class ProgressBar extends HTMLElement {
   }
 
   init() {
-    this.initAttributes();
     this.initUi();
   }
 
@@ -125,15 +139,6 @@ class ProgressBar extends HTMLElement {
     // }
   }
 
-  initAttributes() {
-    this.options = options.reduce((attrs, name) => {
-      return {
-        ...attrs,
-        [name]: this.getAttribute(name) || 'null'
-      };
-    }, {});
-  }
-
   onTrigger() {
     this.toggleModal();
     this.poll();
@@ -146,7 +151,7 @@ class ProgressBar extends HTMLElement {
   }
 
   poll() {
-    getStatus()
+    getStatus(this.statusSource)
       .then(
         (status) => {
           const percent =
@@ -161,7 +166,10 @@ class ProgressBar extends HTMLElement {
             this.message = 'Completed.';
           }
         },
-        (error) => (this.message = this.error)
+        (error) => {
+          console.error(error);
+          this.message = this.getErrorMessage(error);
+        }
       )
       .finally(() => {
         if (this.progress === this.maxProgress) {

@@ -4,7 +4,11 @@
  */
 export const getStatus = async (statusApi) => {
   const response = await fetch(statusApi);
-  return await response.json();
+  const json = await response.json();
+
+  return (await json.hasOwnProperty('error'))
+    ? Promise.reject(json)
+    : Promise.resolve(json);
 };
 
 export default { getStatus };
