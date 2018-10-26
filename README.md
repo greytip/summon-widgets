@@ -35,13 +35,13 @@ customElements.define('my-progress-bar', SummonWidgets.ProgressBar);
 
 Fetches status and displays it.
 
-- `job-id`: Id of the job whose status need to displayed.
-- `source`: Source which take the job-id and returns the status. Source should have a placeholder for job. eg. `get/{job-id}/status`. `{job-id}` is a placeholder for the job.
+- `job-id`: Id of the job whose status needs to displayed.
+- `source`: Source which takes the job-id and returns the status. Source should have a placeholder for job. eg. `get/{job-id}/status`. `{job-id}` is a placeholder for the job.
 
 ## Development Environment Setup
 
 1. Clone the repository.
 2. Navgite to repo and Run `npm install` to get dependecies.
-3. Run `npm run severe` to start a local server.
+3. Run `npm run server` to start a local server.
 4. Hit `http://localhost:4000` in the browser.
 5. To create build run `npm run build`.
